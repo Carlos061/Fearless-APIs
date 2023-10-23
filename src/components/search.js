@@ -2,6 +2,7 @@ import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function SearchBar(props) {
+    
     const onregionChange = (e) => {
         props.regionChange(e.target.value)
     }
@@ -18,7 +19,7 @@ function SearchBar(props) {
                             <option value="GB">United Kingdom</option>
                             <option value="BE">Belgium</option>
                             <option value="FR">France</option>
-                            <option value="KE">Israel</option>
+                            <option value="KE">Kenya</option>
                         </select>
                     </div>
                 </div>

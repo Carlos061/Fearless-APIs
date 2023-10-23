@@ -13,10 +13,10 @@ function Trends() {
     }
 
   useEffect(() => {
-    const regionCode=`${selectRegion}`
+    // const regionCode=`${selectRegion}`
     async function getTrends() {
       const response = await fetch(
-        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&regionCode=${regionCode}&key=AIzaSyCMKJqq4Hyfbh4rR5peZ8VGFiOf25ZynxY`
+        `https://www.googleapis.com/youtube/v3/videos?part=snippet,statistics&chart=mostPopular&maxResults=50&regionCode=${selectRegion}&key=AIzaSyCMKJqq4Hyfbh4rR5peZ8VGFiOf25ZynxY`
       );
       const data = await response.json();
       const wordCloudData = data.items.map((video,index) => {
@@ -27,6 +27,7 @@ function Trends() {
           index:index
         };
       });
+
       setTrends(wordCloudData);
     }
     if(selectRegion){
@@ -54,7 +55,7 @@ function Trends() {
   return (
     <>
       {selectRegion ? <h1>TRENDS IN {selectRegion}</h1>:<h2>No region selected yet!</h2>}
-      <SearchBar selectRegion={selectRegion} regionChange={handleRegionChange}></SearchBar>
+      <SearchBar selectRegion={selectRegion} regionChange={handleRegionChange}/>
       <ReactWordcloud words={trends} options={options} callbacks={callbacks} />
     </>
   );
